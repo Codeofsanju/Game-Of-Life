@@ -98,11 +98,23 @@ class GameOfLife {
     // based on their current alive neighbors
     for(let i = 0; i < this.height; i++){
       for(let j = 0; j < this.width; j++){
-        if(this.livingNeighbors(i, j) === 3){
-          console.log('need to die');
+        if(this.livingNeighbors(i, j) < 2 || this.livingNeighbors(i,j) > 3){
+          if(this.getCell(i, j) === 'alive'){          // cell dies if alive
+            newBoard[i][j] = 0;
+          }
+        }
+        else if(this.livingNeighbors(i,j) === 3){
+          if(this.getCell(i, j) === 'dead'){          // cell become alive if dead
+            newBoard[i][j] = 1;
+          }
+        }
+        else{
+          const state = this.getCell(i,j) === 'alive' ? 1:0
+          newBoard[i][j] = state;
         }
       }
     }
     this.board = newBoard;
+    console.log(newBoard);
   }
 }
