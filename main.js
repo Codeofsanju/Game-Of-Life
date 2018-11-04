@@ -53,7 +53,17 @@ const paint = () => {
   // HINT:
   //   https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
   //   https://developer.mozilla.org/en-US/docs/Web/API/Element/getElementsByTagName
-}
+  tds.forEach(td => {
+    const val = gol.getCell(td.dataset.row, td.dataset.col) === 'alive' ? 1:0;
+    console.log(val);
+    if(val === 1){
+      td.classList.add('alive');
+    }
+    else{
+      td.classList.remove('alive');
+    }
+  });
+};
 
 
 /**
