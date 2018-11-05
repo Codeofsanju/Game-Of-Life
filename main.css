@@ -1,6 +1,7 @@
 body {
   font-family: Futura, Helvetica, Arial, sans-serif;
-  color: #444;
+  color: white;
+  background-color: black;
 }
 
 h1 {
@@ -28,9 +29,9 @@ td.alive {
   background-color: #8CC8DD;
 }
 
-.button:hover{
-  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-
+.button:hover, .social:hover{
+  box-shadow: 0 12px 16px 0 rgba(255, 255, 255, 0.24), 0 17px 50px 0 rgba(255, 255, 255, 0.19);
+  cursor: pointer;
 }
 
 .button {
@@ -40,8 +41,8 @@ td.alive {
   border-radius: 3px;
   font-size: 0.9em;
   text-align: center;
-  background-color: #2ba6cb;
-  color: #fefefe; 
+  background-color: white;
+  color: black; 
 }
 
 
@@ -53,3 +54,31 @@ td.alive {
 .clicked{
   background-color: red;
 }
+
+
+.profiles{
+  display: flex;
+  flex-direction: row;
+}
+.links{
+  display: inline-block;
+}
+.social{
+  transition-duration: 0.7s;
+  background-color: transparent;
+  border: transparent;
+  border-radius: 9999em;
+  margin-top: 5%;
+}
+img{
+  width: 4vh;
+  height: 4vh;
+}
+#linkedIn{
+  width: 4vh;
+  height: 3.5vh;
+}
+/* .social:hover{
+  box-shadow: 0 12px 16px 0 rgba(255, 255, 255, 0.24), 0 17px 50px 0 rgba(255, 255, 255, 0.19);
+  cursor: pointer;
+} */
