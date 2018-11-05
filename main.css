@@ -24,7 +24,10 @@ h1 {
   width: 18px;
   height: 18px;
 }
-
+td:hover{
+  background-color: white;
+  cursor: pointer;
+}
 td.alive {
   background-color: #8CC8DD;
 }
