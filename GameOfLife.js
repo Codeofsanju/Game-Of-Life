@@ -18,7 +18,6 @@ class GameOfLife {
       }
       grid.push(row);
     }
-    console.dir(grid);
     return grid;
   }
 
@@ -33,7 +32,7 @@ class GameOfLife {
 
     setCell(value, row, col) {
       const args = Array.from(arguments);
-      if (args.length !== 3 || row > this.width - 1 || col > this.height - 1 || row < 0 || col < 0){
+      if (args.length !== 3 || row > this.height-1 || col > this.width-1 || row < 0 || col < 0){
         return 'error';
       }
       this.board[row][col] = value;
@@ -115,6 +114,5 @@ class GameOfLife {
       }
     }
     this.board = newBoard;
-    console.log(newBoard);
   }
 }

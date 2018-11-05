@@ -1,4 +1,4 @@
-const width = 25;
+const width = 60;
 const height = 20; // width and height dimensions of the board
 
 /**
@@ -55,7 +55,7 @@ const paint = () => {
   //   https://developer.mozilla.org/en-US/docs/Web/API/Element/getElementsByTagName
   tds.forEach(td => {
     const val = gol.getCell(td.dataset.row, td.dataset.col) === 'alive' ? 1:0;
-    console.log(val);
+    // console.log(val);
     if(val === 1){
       td.classList.add('alive');
     }
@@ -72,23 +72,54 @@ const paint = () => {
 
 document.getElementById("board").addEventListener("click", event => {
   // TODO: Toggle clicked cell (event.target) and paint
+  // console.log(event.target.dataset.row, event.target.dataset.col);
+  gol.toggleCell(event.target.dataset.row, event.target.dataset.col);
+  paint();
 });
 
 document.getElementById("step_btn").addEventListener("click", event => {
   // TODO: Do one gol tick and paint
+  gol.tick();
+  paint();
 });
 
+let interval = null;
 document.getElementById("play_btn").addEventListener("click", event => {
   // TODO: Start playing by calling `tick` and paint
   // repeatedly every fixed time interval.
   // HINT:
   // https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setInterval
-});
+    document.getElementById("play_btn").classList.add('clicked');
+    if (!interval) {
+      interval = setInterval(() => {
+        gol.tick();
+        paint();
+      }, 200);
+    } else {
+      clearInterval(interval);
+      interval = null;
+      document.getElementById("play_btn").classList.remove('clicked');
+    }
+  }
+);
 
 document.getElementById("random_btn").addEventListener("click", event => {
   // TODO: Randomize the board and paint
+  for(let i = 0; i < height; i++){
+    for(let j = 0; j < width; j++){
+      let rand = Math.floor(Math.random() * Math.floor(2));
+      gol.setCell(rand, i, j);
+    }
+  }
+  paint();
 });
 
 document.getElementById("clear_btn").addEventListener("click", event => {
   // TODO: Clear the board and paint
+  for(let i = 0; i < height; i++){
+    for(let j = 0; j < width; j++){
+      gol.setCell(0, i, j);
+    }
+  }
+  paint();
 });

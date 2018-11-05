@@ -18,6 +18,7 @@ h1 {
 }
 
 #board td{
+  transition-duration: .18s;
   border: 1px solid #ddd;
   width: 18px;
   height: 18px;
@@ -27,11 +28,13 @@ td.alive {
   background-color: #8CC8DD;
 }
 
-#control_panel {
-  margin: 10px 0 50px 0;
+.button:hover{
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+
 }
 
 .button {
+  transition-duration: .3s;
   padding: 0.85em 1em;
   border: 1px solid transparent;
   border-radius: 3px;
@@ -41,10 +44,12 @@ td.alive {
   color: #fefefe; 
 }
 
-.button:hover, .button:focus {
-  background-color: #258dad;
-}
+
 
 .button:focus {
-  outline: dashed 1px #2ba6cb;
+  outline: transparent;
+}
+
+.clicked{
+  background-color: red;
 }
